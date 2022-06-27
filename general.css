@@ -1,0 +1,33 @@
+body{
+    font-family: 'Arial', sans-serif;
+    background-color: lightgray;
+}
+
+#wrapper {
+    margin: 15 auto;
+    background-color: #fff;
+    padding: 32px;
+}
+header {
+    background-color: darkgrey;
+    height: 150px;
+    padding: 4px;
+}
+
+header h1 {
+    text-transform: uppercase;
+    text-align: center;
+    color:white;
+    line-height: 50px;
+}
+
+header h2 {
+    font-variant: small-caps;
+    text-align: center;
+    color:whitesmoke;
+}
+
+header h1 a {
+    text-decoration: none;
+    color:white;
+}
