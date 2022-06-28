@@ -7,10 +7,11 @@
     <title> ARTgelika </title>
     <link rel="stylesheet" href="../../main/css/main.css">
     <link rel="stylesheet" href="../../general.css">
+    <link rel="stylesheet" href="../css/order.css">
 </head>
 
 <body>
-    
+
     <div id="wrapper">
         <header>
             <h1><a href="../../index.html">ARTgelika</a></h1>
@@ -33,7 +34,24 @@
             </nav>
         </header>
     </div>
-    
+
+    <div class="contact">
+        <form onsubmit="sendEmail(); reset(); return false;">
+            <h3>PLACE AN ORDER</h3>
+            <input type="text" id="name" placeholder="Your name" required>
+            <input type="email" id="email" placeholder="Email id" required>
+            <input type="text" id="phone" placeholder="Phone number" required>
+            <textarea id="message" rows="4" placeholder="Provide a main information about your order"></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <div class="footer">
+        <p>Author: Angelika Przeliorz<br>
+            <a href="mailto:artgelika@gmail.com">artgelika@gmail.com</a>
+        </p>
+    </div>
+
 </body>
 
 </html>
