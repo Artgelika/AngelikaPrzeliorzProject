@@ -19,7 +19,7 @@ header h1 {
     text-transform: uppercase;
     text-align: center;
     color:white;
-    line-height: 50px;
+    line-height: 45px;
 }
 
 header h2 {
@@ -28,15 +28,17 @@ header h2 {
     color:whitesmoke;
 }
 
+
+
 .main_menu {
     padding: 5px 0 5px 0;
     text-align: center;
     line-height: 15px;
-    width: 100%;
+    width: 98%;
     background-color:whitesmoke;
     transition-duration: 0.5s;
     padding: 1rem;
-    position: relative;
+    position: center;
     text-decoration: none;
     display: block;
     float: center;
@@ -61,6 +63,19 @@ ul.main_menu a {
 
 .main_menu a:hover {
     color: #c2d2d2
+}
+
+@keyframes example {
+    from {background-color: darkgray;}
+    to {background-color: lightgray;}
+  }
+  
+#animation {
+    background-color: lightgray;
+    animation-name: example;
+    animation-duration: 4s;
+    margin-left: 2%;
+    margin-right: 2%;
 }
 
 ul li ul {
@@ -111,7 +126,7 @@ ul li ul li {
     width: 100%;
 }
 
-.footer {
+footer {
     position: fixed;
     left: 0;
     bottom: 0;
@@ -122,7 +137,7 @@ ul li ul li {
     padding-left:2%;
 }
 
-.footer a {
+footer a {
     text-decoration: none;
     color:white;
 }

@@ -6,12 +6,11 @@ body{
 #wrapper {
     margin: 15 auto;
     background-color: #fff;
-    padding: 32px;
+    padding: 20px;
 }
 header {
     background-color: darkgrey;
     height: 150px;
-    padding: 4px;
 }
 
 header h1 {
@@ -30,4 +29,31 @@ header h2 {
 header h1 a {
     text-decoration: none;
     color:white;
+}
+
+.pictures{
+    display: flex;
+    margin-right: 50px;
+    margin-left: 30px;
+}
+
+.pictures>div:first-child{
+    padding-left: 100px;
+    margin-right: 30px;
+}
+
+.pictures>div:second-child{
+    margin: 10 auto;
+    text-align: left;
+    color:black;
+    padding-right:40px;
+    margin-right: 30px;
+}
+
+.pictures>div:last-child{
+    margin-left: 30px;
+    margin: 10 auto;
+    text-align: left;
+    color:black;
+    padding-right:40px;
 }
