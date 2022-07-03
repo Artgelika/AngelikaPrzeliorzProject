@@ -39,7 +39,7 @@
 
     <div class="container">
 		<h1 class="label">Place an order</h1>
-		<form class="login_form" action="submitting.html" method="post" name="form" onsubmit="return validated()">
+		<form class="login_form" method="post" name="form" onsubmit="return validated()">
 			
             <div class="font">Name</div>
 			<input autocomplete="off" type="text" name="username">
@@ -53,9 +53,6 @@
 			<textarea rows="4" name="message"></textarea>
 			<div id="message_error">Please fill up your message</div>
 
-            <div class="font font2">Password</div>
-			<input type="password" name="password">
-			<div id="pass_error">Please fill up your Password</div>
 			<button type="submit">Submit</button>
 		</form>
 	</div>	
