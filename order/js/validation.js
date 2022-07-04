@@ -1,64 +1,92 @@
-var username = document.forms['form']['username'];
-var email = document.forms['form']['email'];
-var message = document.forms['form']['message'];
+const usernameEl = document.querySelector('#username');
+const emailEl = document.querySelector('#email');
+const messageEl = document.querySelector('#message');
+const form = document.querySelector('#login_form');
 
-var email_error = document.getElementById('email_error');
-var username_error = document.getElementById('username_error')
-var message_error = document.getElementById('message_error');
+const checkUsername = () => {
+    let valid = false;
+    const min = 3;
+    const max = 20;
+    const username = usernameEl.value.trim();
 
-email.addEventListener('textInput', email_Verify);
-username.addEventListener('textInput', username_Verify);
-password.addEventListener('textInput', message_Verify);
-
-
-function validated() {
-    if (username.value.length < 3 || !valid_Name(username.value)) {
-        username.style.border = "1px solid red";
-        username_error.style.display = "block";
-        username.focus();
+    if (!isRequired(username)) {
+        showError(usernameEl, 'Username cannot be blank.');
+    } else if (!isBetween(username.length, min, max)) {
+        showError(usernameEl, 'Username must be between 3 and 20 characters.');
+    } else {
+        showSuccess(usernameEl);
+        valid = true;
     }
-    if (email.value.length < 9 || !valid_Email(email.value)) {
-        email.style.border = "1px solid red";
-        email_error.style.display = "block";
-        email.focus();
-    }
-    if (message.value.length < 6) {
-        message.style.border = "1px solid red";
-        message_error.style.display = "block";
-        message.focus();
-    }
+    return valid;
 }
 
-function username_Verify() {
-    if (username.value.length >= 3 && username.value.length <=20) {
-        username.style.border = "1px solid silver";
-        username_error.style.display = "none";
-        return true;
+const checkEmail = () => {
+    let valid = false;
+    const email = emailEl.value.trim();
+
+    if (!isRequired(email)) {
+        showError(emailEl, 'Email cannot be blank.');
+    } else if (!isEmailValid(email)) {
+        showError(emailEl, 'Email is not valid.');
+    } else {
+        showSuccess(emailEl);
+        valid = true;
     }
+    return valid;
 }
 
-function email_Verify() {
-    if (email.value.length >= 8 ) {
-        email.style.border = "1px solid silver";
-        email_error.style.display = "none";
-        return true;
+const isEmailValid = (email) => {
+    const pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return pattern.test(email);
+};
+
+const isNameValid = (username) => { // check the regex!
+    const pattern = /^[A-Z][a-z]* [A-Z][a-z]*( [A-Z])?$/;
+    return pattern.test(username);
+}
+
+const isRequired = value => value === '' ? false : true;
+const isBetween = (length, min, max) => length < min || length > max ? false : true;
+
+const showError = (input, message) => {
+    const formField = input.parentElement;
+    formField.classList.remove('success');
+    formField.classList.add('error');
+
+    const error = formField.querySelector('small');
+    error.textContent = message;
+}
+
+const showSuccess = (input) => {
+    const formField = input.parentElement;
+    formField.classList.remove('error');
+    formField.classList.add('success');
+
+    const error = formField.querySelector('small');
+    error.textContent = '';
+}
+
+form.addEventListener('submit', e=>{
+    e.preventDefault();
+
+    let isUsernameValid = checkUsername(),
+    isEmailValid = checkEmail();
+
+    let isFormValid = isUsernameValid &&
+    isEmailValid;
+
+    if (isFormValid) {
+
     }
-}
+});
 
-function message_Verify() {
-    if (message.value.length >= 5) {
-        message.style.border = "1px solid silver";
-        message_error.style.display = "none";
-        return true;
+form.addEventListener('input', function (e) {
+    switch (e.target.id) {
+        case 'username':
+            checkUsername();
+            break;
+        case 'email':
+            checkEmail();
+            break;
     }
-}
-
-function valid_Name(username){
-    const regexUsernamePattern = new RegExp('(^[A-Z][a-z]{,19})$');
-    return username.match(regexUsernamePattern);
-}
-
-function valid_Email(email){
-    const regexEmailPattern = new RegExp('([A-Z])\w+.+@+([a-z])+.+([a-z]{2,3})');
-    return email.match(regexEmailPattern);
-}
+});
