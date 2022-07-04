@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../../main/css/main.css">
     <link rel="stylesheet" href="../../general.css">
     <link rel="stylesheet" href="../css/style.css">
-    
+
 </head>
 
 <body>
@@ -38,24 +38,31 @@
 
 
     <div class="container">
-		<h1 class="label">Place an order</h1>
-		<form class="login_form" method="post" name="form" onsubmit="return validated()">
-			
-            <div class="font">Name</div>
-			<input autocomplete="off" type="text" name="username">
-			<div id="username_error">Please fill up your name</div>
+        <h1 class="label">Place an order</h1>
+        <form class="login_form" id="login_form" method="post" name="form">
 
-            <div class="font">Email</div>
-			<input autocomplete="off" type="text" name="email">
-			<div id="email_error">Please fill up your email</div>
-			
-            <div class="font">Message</div>
-			<textarea rows="4" name="message"></textarea>
-			<div id="message_error">Please fill up your message</div>
+            <div class="font">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" autocomplete="off">
+                <small></small>
+            </div>
 
-			<button type="submit">Submit</button>
-		</form>
-	</div>	
+            <div class="font">
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email" autocomplete="off">
+                <small></small>
+            </div>
+
+            <div class="font">
+                <label for="message">Message</label>
+                <textarea rows="4" name="message" id="message"></textarea>
+            </div>
+
+            <div class="font">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
 
     <script src="../js/validation.js"></script>
 
